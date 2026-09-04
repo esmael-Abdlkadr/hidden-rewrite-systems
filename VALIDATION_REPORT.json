@@ -1,0 +1,99 @@
+{
+  "status": "PASS",
+  "cases": 5000,
+  "train_cases": 4014,
+  "test_cases": 986,
+  "test_over_train_ratio": 0.197,
+  "alphabet_size": 5,
+  "rules_per_case_shares": {
+    "3": 0.2,
+    "4": 0.3424,
+    "5": 0.4576
+  },
+  "rule_form": "two-symbol pattern -> 1-3 symbol replacement, replacement never equal to pattern",
+  "priority_ordered": true,
+  "rules_disclosed": false,
+  "priority_disclosed": false,
+  "derivation_depth_bound_shares": {
+    "2": 0.3926,
+    "3": 0.332,
+    "4": 0.2754
+  },
+  "depth_bound_disclosed": false,
+  "query_rewrite_steps_shares": {
+    "2": 0.7001,
+    "3": 0.2377,
+    "4": 0.0622
+  },
+  "mean_query_rewrite_steps": 2.362,
+  "demos_per_case": [
+    20,
+    26
+  ],
+  "total_demo_pairs": 115412,
+  "queries_per_case": [
+    3,
+    5
+  ],
+  "total_queries": 18299,
+  "input_length_range": [
+    10,
+    14
+  ],
+  "normal_form_length_range": [
+    6,
+    18
+  ],
+  "intermediate_states_disclosed": false,
+  "acceptance_criteria": {
+    "min_query_rewrite_steps": 2,
+    "min_demonstrations_witnessing_each_needed_rule": 2,
+    "output_never_equals_input": true,
+    "query_inputs_absent_from_demo_inputs": true,
+    "all_derivations_terminate": true
+  },
+  "depth_bound_draw": "weighted to cancel rejection-sampling acceptance bias",
+  "generation": "deterministic leftmost / highest-priority rewriting to normal form, seed 20260906",
+  "deterministic": true,
+  "train_sha256": "643725b10ad8ef594552243749e032c9e3119c672ac2b92fc0dd8f0a51026074",
+  "test_sha256": "49d2a5829905b5b00475edf9afb41ef5fbe622f07417f1466683ac4a0b87ebba",
+  "duplicate_case_ids": 0,
+  "train_test_overlap": 0,
+  "constant_columns": 0,
+  "case_id": "opaque sha256 prefix; max |corr| with target length 0.008",
+  "metric": "mean over cases of 0.60*gain_over_copying + 0.40*exact_match",
+  "scored_baselines": {
+    "perfect": 1.0,
+    "rule_induction_8s_per_case": 0.5075,
+    "rule_induction_3s_per_case": 0.3643,
+    "rule_induction_1.5s_per_case": 0.2623,
+    "dedup_input": 0.0133,
+    "nearest_demo_replay": 0.006,
+    "sorted_input": 0.0003,
+    "shifted_answers": 0.0002,
+    "random_sequences": 0.0001,
+    "echo_input_sample_submission": 0.0,
+    "empty_sequences": 0.0,
+    "constant_output": 0.0
+  },
+  "identifiability": {
+    "demo_fit_1.000": {
+      "cases": 8,
+      "query_score": 1.0
+    },
+    "demo_fit_0.950_0.999": {
+      "cases": 24,
+      "query_score": 0.6446
+    },
+    "demo_fit_0.850_0.950": {
+      "cases": 55,
+      "query_score": 0.3906
+    },
+    "demo_fit_below_0.850": {
+      "cases": 3,
+      "query_score": 0.2394
+    }
+  },
+  "grader_robustness_tests_passed": 12,
+  "licence": "CC0 1.0 Universal"
+}
