@@ -108,9 +108,10 @@ The generator kept only cases where:
 | `test.csv` | 986 | `case_id`, `demo_inputs`, `demo_outputs`, `query_inputs` |
 | `sample_submission.csv` | 986 | `case_id`, `query_outputs` |
 
-Test answers are held privately in `answer.csv`, which carries `case_id`,
-`query_inputs` and `query_outputs` — the grader needs the inputs to measure
-skill relative to echoing them.
+Test answers are held privately. Each held-out answer stores the case's query
+inputs alongside its targets, because the grader measures skill relative to
+echoing the input and takes that baseline only from the held-out answers —
+never from anything a submission contains.
 
 Every sequence-valued column holds a JSON array. `demo_inputs` and
 `demo_outputs` are arrays of 20–26 sequences, aligned by position:
