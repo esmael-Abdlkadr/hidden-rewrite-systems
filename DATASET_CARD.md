@@ -89,6 +89,10 @@ Re-running the generator reproduces the dataset bit for bit.
 Released under **CC0 1.0 Universal (Public Domain Dedication)**,
 <https://creativecommons.org/publicdomain/zero/1.0/>.
 
+The canonical source record for this dataset is
+<https://github.com/esmael-Abdlkadr/hidden-rewrite-systems>, which holds the
+dataset card, the integrity hashes and the scored baselines.
+
 The underlying formalism — rewriting systems over strings, also called
 semi-Thue systems — is standard; the classical reference is Book and Otto,
 *String-Rewriting Systems* (Springer, 1993).
