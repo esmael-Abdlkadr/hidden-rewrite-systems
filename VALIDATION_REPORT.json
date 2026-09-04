@@ -74,7 +74,8 @@
     "random_sequences": 0.0001,
     "echo_input_sample_submission": 0.0,
     "empty_sequences": 0.0,
-    "constant_output": 0.0
+    "constant_output": 0.0,
+    "rule_induction_32s_per_case": 0.7821
   },
   "identifiability": {
     "demo_fit_1.000": {
@@ -95,5 +96,25 @@
     }
   },
   "grader_robustness_tests_passed": 12,
-  "licence": "CC0 1.0 Universal"
+  "licence": "CC0 1.0 Universal",
+  "saturation": {
+    "identifiable": true,
+    "ceiling": 1.0,
+    "reference_solver_does_not_plateau": true,
+    "mitigations_tested_and_rejected": {
+      "all_patterns_two_or_three_symbols": {
+        "score_3s_per_case": 0.0973,
+        "verdict": "rejected"
+      },
+      "25pct_three_symbol_patterns": {
+        "score_3s_per_case": 0.1097,
+        "verdict": "rejected"
+      }
+    },
+    "reason": "a solver cannot know which rules use three-symbol patterns, so any three-symbol rule forces a search over the full 150-candidate pool; cost is set by pool size, not by the share of rules using it",
+    "expected_band": [
+      0.36,
+      0.51
+    ]
+  }
 }
