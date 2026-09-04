@@ -13,6 +13,56 @@ Every case has its own private rule set, so nothing transfers between cases by
 memorisation. A case is solved by working out, from that case's demonstrations
 alone, what the rules must be.
 
+## Intended use
+
+The dataset is built for **benchmarking sequence-to-sequence models on inductive
+reasoning**: recovering a latent symbolic system from input/output evidence and
+applying it to unseen inputs. It targets the setting where the rules governing a
+transduction are withheld rather than supplied to the decoder, which is the
+usual arrangement in constrained-generation work.
+
+Concretely it is intended for
+
+- evaluating in-context rule induction and few-shot systematic generalisation;
+- comparing neural sequence models against program-synthesis and search-based
+  approaches on the same evidence;
+- measuring how much of a latent system a method recovers, since the score
+  degrades smoothly with partial recovery rather than collapsing to right/wrong.
+
+It is **not** intended as a model of any natural language, biological sequence,
+or real transduction process, and it should not be used to make claims about
+performance on such data.
+
+## Limitations
+
+- **Restricted alphabet.** Symbols are drawn from just five values. This keeps
+  rule interactions dense and derivations short enough to be inferable, but it
+  is far smaller than any natural vocabulary, and methods that depend on
+  distributional structure over large vocabularies will not be exercised here.
+- **Restricted rule form.** Every rule rewrites a two-symbol pattern into one to
+  three symbols. Real rewriting systems admit longer and context-sensitive
+  patterns; those are absent by design, because widening the pattern space to
+  three symbols was measured to drop a reference solver from 0.36 to 0.10 and
+  put the task out of reach.
+- **Short sequences and shallow derivations.** Inputs run 10–14 symbols and
+  derivations terminate within two to four rewriting steps. Behaviour at longer
+  horizons, where error compounds, is not measured.
+- **Synthetic throughout.** Every case is generated, so results transfer to
+  real-world sequence transduction only insofar as the underlying skill —
+  inferring a latent system from examples — transfers. No claim is made that
+  performance here predicts performance on natural data.
+- **No distribution shift.** Train and test cases are drawn from one generator
+  with independently sampled rule sets. The split measures generalisation to
+  unseen rule systems, not robustness to a shifted regime.
+- **Difficulty is search-bound, not ambiguity-bound.** The task is fully
+  identifiable: a hypothesis reproducing every demonstration also solves every
+  query. Scores therefore track how much compute a method spends on search as
+  well as how good the method is, and a sufficiently well-resourced search
+  approaches the ceiling.
+- **Every rule a query needs is witnessed at least twice.** Cases where the
+  demonstrations underdetermine a needed rule were filtered out, so the dataset
+  does not measure behaviour under genuinely incomplete evidence.
+
 ## The rewriting semantics
 
 Sequences are lists of integer symbols drawn from the alphabet `{0, 1, 2, 3, 4}`.
